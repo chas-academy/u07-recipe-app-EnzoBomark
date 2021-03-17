@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ComplexSearchService } from 'src/app/servives/complex-search.service';
+import { ComplexSearchService } from 'src/app/services/complex-search.service';
 import { ComplexSearch } from '../../models/ComplexSearch';
 
 @Component({
