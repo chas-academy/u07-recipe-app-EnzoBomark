@@ -11,11 +11,15 @@ export class RecipesComponent implements OnInit {
 
   recipes:Recipe[];
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService) {
+   }
 
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe(recipes => {
-      console.log(recipes)
+      let recipeArray = [];
+      Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
+      console.log(recipeArray);
+      this.recipes = recipeArray;
     });
   }
 }

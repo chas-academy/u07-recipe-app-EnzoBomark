@@ -1,5 +1,5 @@
 export class Recipe {
-  id:number;
+  readyInMinutes:number;
   title:string;
-  complete:boolean;
+  image:string;
 }
