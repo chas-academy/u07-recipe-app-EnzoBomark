@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/Recipe';
 import { Observable } from 'rxjs';
+import{ GlobalConstants } from '../common/global-constants';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class RecipeService {
   //RANDOM LIST
   recipesUrl:string = 'https://api.spoonacular.com/recipes/random';
-  API_KEY:string = '&apiKey=af8b57deb431483a809745ca9fc5bb82';
+  API_KEY:string = GlobalConstants.API_KEY;
   number:string = '?number=10'
   includeNutrition:string = '&includeNutrition=true'
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComplexSearch } from '../models/ComplexSearch';
 import { Observable } from 'rxjs';
+import{ GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ComplexSearchService {
   //RESIPE SEARCH//
   recipesUrl:string = 'https://api.spoonacular.com/recipes/complexSearch';
-  API_KEY:string = '&apiKey=af8b57deb431483a809745ca9fc5bb82';
+  API_KEY:string = GlobalConstants.API_KEY;
   number:string = '?number=10'
   type:string = '&type=dessert'
 
