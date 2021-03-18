@@ -13,6 +13,10 @@ export class ComplexSearchComponent implements OnInit {
 
   constructor(private complexSearchService: ComplexSearchService) { }
 
+  getQuery(query: string){
+    console.log(query);
+  }
+
   ngOnInit(): void {
     this.complexSearchService.getComplexSearch().subscribe(recipes => {
       let recipeArray = [];

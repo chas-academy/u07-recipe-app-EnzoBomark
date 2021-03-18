@@ -10,11 +10,12 @@ import{ GlobalConstants } from '../common/global-constants';
 
 export class ComplexSearchService {
   //RESIPE SEARCH//
-  API_URL:string = 'https://api.spoonacular.com/recipes/complexSearch';
+  // API_URL:string = 'https://api.spoonacular.com/recipes/complexSearch';
+  API_URL:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
 
   //QUERYS//
-  NUMBER:string = '?number=100';
+  NUMBER:string = '?number=10';
 
   QUERY:string = '&query=';
   queryValue:string = '';

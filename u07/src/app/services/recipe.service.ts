@@ -10,7 +10,8 @@ import{ GlobalConstants } from '../common/global-constants';
 })
 export class RecipeService {
   //RANDOM LIST
-  recipesUrl:string = 'https://api.spoonacular.com/recipes/random';
+  // recipesUrl:string = 'https://api.spoonacular.com/recipes/random';
+  recipesUrl:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
   number:string = '?number=10'
   includeNutrition:string = '&includeNutrition=true'
