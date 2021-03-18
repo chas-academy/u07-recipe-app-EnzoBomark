@@ -10,8 +10,8 @@ import{ GlobalConstants } from '../common/global-constants';
 
 export class ComplexSearchService {
   //RESIPE SEARCH//
-  // API_URL:string = 'https://api.spoonacular.com/recipes/complexSearch';
-  API_URL:string = '';
+  API_URL:string = 'https://api.spoonacular.com/recipes/complexSearch';
+  // API_URL:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
 
   //QUERYS//
@@ -19,32 +19,27 @@ export class ComplexSearchService {
 
   QUERY:string = '&query=';
   queryValue:string = '';
-  query:string = `${this.QUERY}${this.queryValue}`;
-
 
   //ADD type
   TYPE:string = '&type=';
   typeValue:string = '';
-  type:string = `${this.TYPE}${this.typeValue}`;
 
   //ADD intolerances
   INTOLERANCES:string = '&intolerances=';
   intoleranceValue:string = '';
-  intolerances:string = `${this.INTOLERANCES}${this.intoleranceValue}`;
 
   //ADD cuisine
   CUISINE:string = '&cuisine=';
   cuisineValue:string = '';
-  cuisine:string = `${this.CUISINE}${this.cuisineValue}`;
 
   //ADD diet
   DIET:string = '&diet=';
   dietValue:string = '';
-  diet:string = `${this.DIET}${this.dietValue}`;
 
   constructor(private http: HttpClient) { }
 
-  getComplexSearch():Observable<ComplexSearch[]> {
-    return this.http.get<ComplexSearch[]>(`${this.API_URL}${this.NUMBER}${this.query}${this.type}${this.intolerances}${this.cuisine}${this.diet}${this.API_KEY}`);
+  getComplexSearch(query):Observable<ComplexSearch[]> {
+    this.queryValue = query.query;
+    return this.http.get<ComplexSearch[]>(`${this.API_URL}${this.NUMBER}${this.QUERY}${this.queryValue}${this.TYPE}${this.typeValue}${this.INTOLERANCES}${this.intoleranceValue}${this.CUISINE}${this.cuisineValue}${this.DIET}${this.dietValue}${this.API_KEY}`);
   }
 }
