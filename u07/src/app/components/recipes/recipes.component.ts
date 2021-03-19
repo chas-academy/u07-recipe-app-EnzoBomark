@@ -18,7 +18,6 @@ export class RecipesComponent implements OnInit {
     this.recipeService.getRecipes().subscribe(recipes => {
       let recipeArray = [];
       Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
-      console.log(recipeArray);
       this.recipes = recipeArray;
     });
   }

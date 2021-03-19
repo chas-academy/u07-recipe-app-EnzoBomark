@@ -14,6 +14,8 @@ export class ComplexSearchService {
   // API_URL:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
 
+  includeNutrition:string = '&includeNutrition=true'
+
   //QUERYS//
   NUMBER:string = '?number=10';
 
@@ -40,6 +42,11 @@ export class ComplexSearchService {
 
   getComplexSearch(query):Observable<ComplexSearch[]> {
     this.queryValue = query.query;
-    return this.http.get<ComplexSearch[]>(`${this.API_URL}${this.NUMBER}${this.QUERY}${this.queryValue}${this.TYPE}${this.typeValue}${this.INTOLERANCES}${this.intoleranceValue}${this.CUISINE}${this.cuisineValue}${this.DIET}${this.dietValue}${this.API_KEY}`);
+    this.typeValue = query.type;
+    this.intoleranceValue = query.intolerances;
+    this.cuisineValue = query.cuisine;
+    this.dietValue = query.diet;
+
+    return this.http.get<ComplexSearch[]>(`${this.API_URL}${this.NUMBER}${this.QUERY}${this.queryValue}${this.TYPE}${this.typeValue}${this.INTOLERANCES}${this.intoleranceValue}${this.CUISINE}${this.cuisineValue}${this.DIET}${this.dietValue}${this.includeNutrition}${this.API_KEY}`);
   }
 }

@@ -1,15 +1,6 @@
 
 <div>
- <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" class="mt-10 flex justify-center items-center">
-   <div class="bg-gray-200 p-3 rounded w-80 relative">
-     <input ngModel type="text" name="query" placeholder="Enter a recipe" class="bg-gray-200 w-4/5 focus:outline-none">
-     <button class="absolute right-3 focus:outline-none">Search</button>
-
-   </div>
- </form>
-
   <app-complex-search-item *ngFor="let search of complexSearch" [complexSearch]="search" ></app-complex-search-item>
   <!-- if query returns empty  -->
   <p *ngIf="(complexSearch | json) == '[]'" class="text-center text-red-500 mt-10"> No match, try something else</p>
-
 </div>

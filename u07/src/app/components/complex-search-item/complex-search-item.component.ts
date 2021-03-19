@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ComplexSearch } from 'src/app/models/ComplexSearch';
+import { Router  } from '@angular/router';
 
 
 @Component({
@@ -10,9 +11,12 @@ import { ComplexSearch } from 'src/app/models/ComplexSearch';
 export class ComplexSearchItemComponent implements OnInit {
   @Input() complexSearch: ComplexSearch;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  getInstructions(recipeId: number, imageUrl: string) {
+    this.router.navigate(['/recipes/instructions'], {queryParams: {id: recipeId, image: imageUrl} });
+  }
 }

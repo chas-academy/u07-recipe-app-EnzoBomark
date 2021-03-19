@@ -1,6 +1,5 @@
 
-<div class="bg-gray-200 p-2 m-1 rounded">
+<div class="bg-gray-200 p-2 m-1 rounded cursor-pointer" (click)="getInstructions(complexSearch.id, complexSearch.image)">
   <p>{{ complexSearch.title }}</p>
-  <p>{{ complexSearch.readyInMinutes }}</p>
   <img [src]="complexSearch.image" [alt]="complexSearch.title">
 </div>

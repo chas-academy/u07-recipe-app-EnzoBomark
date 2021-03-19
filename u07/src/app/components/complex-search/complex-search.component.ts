@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplexSearchService } from 'src/app/services/complex-search.service';
 import { ComplexSearch } from '../../models/ComplexSearch';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-complex-search',
@@ -11,19 +12,15 @@ export class ComplexSearchComponent implements OnInit {
 
   complexSearch: ComplexSearch[];
 
-  constructor(private complexSearchService: ComplexSearchService) { }
-
-  getQuery(query: string): void{
-    //Send query to service
-
-    this.complexSearchService.getComplexSearch(query).subscribe(recipes => {
-      let recipeArray = [];
-      Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
-      console.log(recipeArray);
-      this.complexSearch = recipeArray;
-    });
-  }
+  constructor(private complexSearchService: ComplexSearchService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(queryParams => {
+      this.complexSearchService.getComplexSearch(queryParams).subscribe(recipes => {
+        let recipeArray = [];
+        Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
+        this.complexSearch = recipeArray;
+      })
+    });
   }
 }
