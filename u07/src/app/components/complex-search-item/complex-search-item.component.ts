@@ -16,7 +16,7 @@ export class ComplexSearchItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getInstructions(recipeId: number, imageUrl: string) {
-    this.router.navigate(['/recipes/instructions'], {queryParams: {id: recipeId, image: imageUrl} });
+  getInstructions(recipeId: number,title: string, imageUrl: string) {
+    this.router.navigate(['/recipes/instructions'], {queryParams: {id: recipeId, title: title, image: imageUrl} });
   }
 }

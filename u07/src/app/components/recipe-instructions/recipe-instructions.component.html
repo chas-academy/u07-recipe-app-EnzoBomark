@@ -1,5 +1,7 @@
 <img [src]="image" alt="No image" />
 
+<div (click)="setRecipes(id, title, image)">{{ (setValue) ? 'set' : 'remove'  }}</div>
+
 <div *ngFor="let ingredient of ingredients" class="">
   <p class="">{{ ingredient.name }}</p>
 </div>

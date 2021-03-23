@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,16 +6,8 @@ import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private savedRecipesService: SavedRecipesService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  ngDoCheck():void {
-    console.log(this.savedRecipesService.getRecipes());
-  }
-
-  setRecipes(id:number, title:string){
-    this.savedRecipesService.setRecipes(id, title);
   }
 }

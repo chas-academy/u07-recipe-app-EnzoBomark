@@ -12,6 +12,7 @@ import { ComplexSearchComponent } from './components/complex-search/complex-sear
 import { ComplexSearchItemComponent } from './components/complex-search-item/complex-search-item.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipeInstructionsComponent } from './components/recipe-instructions/recipe-instructions.component';
+import { SavedRecipesComponent } from './components/saved-recipes/saved-recipes.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RecipeInstructionsComponent } from './components/recipe-instructions/re
     ComplexSearchComponent,
     ComplexSearchItemComponent,
     HomeComponent,
-    RecipeInstructionsComponent
+    RecipeInstructionsComponent,
+    SavedRecipesComponent
   ],
   imports: [
     AppRoutingModule,
