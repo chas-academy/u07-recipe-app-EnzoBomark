@@ -5,23 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SavedRecipesService {
-  recipes: Array<object> = [];
+  recipes = [];
 
   constructor() { }
 
   setRecipes(id:number, title:string, imageUrl:string) {
-    // Add if recipe does not exist, remove if it exists
-    if(!this.recipes.find(recipe => Object.values(recipe)[0] == id)){
-      this.recipes.push({id: id, title: title, image: imageUrl});
-      console.log('add');
-    } else {
-      if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => Object.values(recipe)[0] != id);
-      console.log('remove');
-    }
+    if(!this.recipes.find(recipe => recipe.id == id)) this.recipes.push({id: id, title: title, image: imageUrl});
+    else if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
   }
 
   removeRecipe(id:number) {
-    if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => Object.values(recipe)[0] != id);
+    if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
   }
 
   getRecipes() {

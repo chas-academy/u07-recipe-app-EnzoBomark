@@ -15,12 +15,10 @@ export class ComplexSearchComponent implements OnInit {
   constructor(private complexSearchService: ComplexSearchService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(queryParams => {
-      this.complexSearchService.getComplexSearch(queryParams).subscribe(recipes => {
-        let recipeArray = [];
-        Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
-        this.complexSearch = recipeArray;
-      })
+    this.complexSearchService.getComplexSearch().subscribe(recipes => {
+      let recipeArray = [];
+      Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
+      this.complexSearch = recipeArray;
     });
   }
 }

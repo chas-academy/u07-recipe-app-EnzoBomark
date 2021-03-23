@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router  } from '@angular/router';
+import { ComplexSearchService } from 'src/app/services/complex-search.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,12 @@ import { Router  } from '@angular/router';
 export class AppComponent {
   title:string = 'Cookalicious';
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private complexSearchService:ComplexSearchService) { }
 
   getQuery(query: object): void{
     //Send query to complex search component who will send it to complex-search-service
+    this.complexSearchService.setComplexSearch(query);
 
-    this.router.navigate(['/recipes'], {queryParams: query});
+    this.router.navigate(['/recipes']);
   }
 }

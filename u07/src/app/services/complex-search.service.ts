@@ -40,13 +40,15 @@ export class ComplexSearchService {
 
   constructor(private http: HttpClient) { }
 
-  getComplexSearch(query):Observable<ComplexSearch[]> {
+  setComplexSearch(query){
     this.queryValue = query.query;
     this.typeValue = query.type;
     this.intoleranceValue = query.intolerances;
     this.cuisineValue = query.cuisine;
     this.dietValue = query.diet;
+  }
 
+  getComplexSearch():Observable<ComplexSearch[]> {
     return this.http.get<ComplexSearch[]>(`${this.API_URL}${this.NUMBER}${this.QUERY}${this.queryValue}${this.TYPE}${this.typeValue}${this.INTOLERANCES}${this.intoleranceValue}${this.CUISINE}${this.cuisineValue}${this.DIET}${this.dietValue}${this.includeNutrition}${this.API_KEY}`);
   }
 }
