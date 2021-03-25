@@ -15,12 +15,22 @@ export class RecipeInstructionsService {
   // API_URL:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
 
-  recipeId:number = null;
+  recipeValue = {id: 0, title: '', image: ''};
 
   constructor(private http: HttpClient) { }
 
-  getComplexSearch(recipeId) {
-    this.recipeId = recipeId;
-    return this.http.get(`${this.API_URL}${this.recipeId}${this.ANALYZEDINSTRUCTIONS}${this.API_KEY}`);
+  setRecipe(recipeId, title, imageUrl) {
+
+    this.recipeValue.id = recipeId;
+    this.recipeValue.title = title;
+    this.recipeValue.image = imageUrl;
+  }
+
+  getRecipeValues() {
+    return  this.recipeValue;
+  }
+
+  getRecipe() {
+    return this.http.get(`${this.API_URL}${this.recipeValue.id}${this.ANALYZEDINSTRUCTIONS}${this.API_KEY}`);
   }
 }

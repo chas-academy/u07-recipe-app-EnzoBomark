@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
+import { RecipeInstructionsService } from 'src/app/services/recipe-instructions.service';
 import { Router  } from '@angular/router';
 
 @Component({
@@ -10,7 +11,11 @@ import { Router  } from '@angular/router';
 export class SavedRecipesComponent implements OnInit {
   recipes: Array<object> = [];
 
-  constructor(private savedRecipesService: SavedRecipesService, private router:Router) { }
+  constructor(
+    private router:Router,
+    private savedRecipesService: SavedRecipesService,
+    private recipeInstructionsService:RecipeInstructionsService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +29,12 @@ export class SavedRecipesComponent implements OnInit {
   }
 
   getInstructions(recipeId: number,title: string, imageUrl: string) {
-    this.router.navigate(['/recipes/instructions'], {queryParams: {id: recipeId, title: title, image: imageUrl} });
+    this.recipeInstructionsService.setRecipe(recipeId, title, imageUrl);
+    this.redirectTo('/recipes/instructions');
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 }
