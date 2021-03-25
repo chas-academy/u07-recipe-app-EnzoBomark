@@ -1,6 +1,6 @@
 <div>
   <p><a routerLink="/">LOGO</a></p>
-  <p><a routerLink="/saved-recipes">SavedItems</a></p>
+  <p><a routerLink="/saved-recipes">SavedItems: {{ savedRecipes }}</a></p>
   <h1>{{ title | uppercase }}</h1>
 
   <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" class="mt-10 flex flex-col justify-center items-center">

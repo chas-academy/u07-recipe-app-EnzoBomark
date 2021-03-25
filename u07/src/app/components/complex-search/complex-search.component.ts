@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplexSearchService } from 'src/app/services/complex-search.service';
 import { ComplexSearch } from '../../models/ComplexSearch';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
 @Component({
   selector: 'app-complex-search',
   templateUrl: './complex-search.component.html',
@@ -12,7 +10,7 @@ export class ComplexSearchComponent implements OnInit {
 
   complexSearch: ComplexSearch[];
 
-  constructor(private complexSearchService: ComplexSearchService, private route: ActivatedRoute,) { }
+  constructor(private complexSearchService: ComplexSearchService, ) { }
 
   ngOnInit(): void {
     this.complexSearchService.getComplexSearch().subscribe(recipes => {
