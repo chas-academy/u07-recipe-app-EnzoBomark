@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from 'src/app/models/Recipe';
+import { RecipeInstructionsService } from 'src/app/services/recipe-instructions.service';
+import { Router  } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,9 +11,22 @@ import { Recipe } from 'src/app/models/Recipe';
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
 
-  constructor() { }
+  constructor(
+    private router:Router,
+    private recipeInstructionsService:RecipeInstructionsService
+  ) { }
 
   ngOnInit(): void {
   }
+
+  getInstructions(recipeId: number,title: string, imageUrl: string) {
+    this.recipeInstructionsService.setRecipe(recipeId, title, imageUrl);
+    this.redirectTo('/recipes/instructions');
+  }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
 }

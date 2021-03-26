@@ -10,15 +10,19 @@ export class SavedRecipesService {
   constructor() { }
 
   setRecipes(id:number, title:string, imageUrl:string) {
+    this.recipes = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
     if(!this.recipes.find(recipe => recipe.id == id)) this.recipes.push({id: id, title: title, image: imageUrl});
     else if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
+    localStorage.setItem('savedRecipes', JSON.stringify(this.recipes));
   }
 
   removeRecipe(id:number) {
+    this.recipes = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
     if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
+    localStorage.setItem('savedRecipes', JSON.stringify(this.recipes));
   }
 
   getRecipes() {
-    return this.recipes;
+    return JSON.parse(localStorage.getItem("savedRecipes") || "[]");
   }
 }

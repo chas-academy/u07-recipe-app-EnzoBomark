@@ -1,5 +1,5 @@
 export class Recipe {
-  readyInMinutes:number;
+  id:number
   title:string;
   image:string;
 }

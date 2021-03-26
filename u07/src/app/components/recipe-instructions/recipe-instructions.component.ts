@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipeInstructionsService } from 'src/app/services/recipe-instructions.service';
-import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
+import { SavedRecipesService } from 'src/app/services/saved-recipes.service';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-recipe-instructions',
   templateUrl: './recipe-instructions.component.html',
@@ -14,8 +15,9 @@ export class RecipeInstructionsComponent implements OnInit {
 
   constructor(
     private recipeInstructionsService: RecipeInstructionsService,
-     private savedRecipesService: SavedRecipesService,
-     ) { }
+    private savedRecipesService: SavedRecipesService,
+    private _location: Location,
+  ) { }
 
   ngOnInit(): void {
       this.recipeInstructionsService.getRecipe().subscribe(recipes => {
@@ -33,6 +35,10 @@ export class RecipeInstructionsComponent implements OnInit {
     this.savedRecipesService.getRecipes();
     if(this.savedRecipesService.getRecipes().find(recipe => Object.values(recipe)[0] == this.recipeValue.id)) this.setValue = false;
     else this.setValue = true;
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   setRecipes(id:number, title:string , imageUrl: string){

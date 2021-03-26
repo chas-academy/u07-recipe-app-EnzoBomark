@@ -17,20 +17,23 @@ export class RecipeInstructionsService {
 
   recipeValue = {id: 0, title: '', image: ''};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setRecipe(recipeId, title, imageUrl) {
 
     this.recipeValue.id = recipeId;
     this.recipeValue.title = title;
     this.recipeValue.image = imageUrl;
+
+    localStorage.setItem("recipeValue", JSON.stringify(this.recipeValue));
   }
 
   getRecipeValues() {
-    return  this.recipeValue;
+    return JSON.parse(localStorage.getItem("recipeValue") || "[]");
   }
 
   getRecipe() {
+    this.recipeValue = JSON.parse(localStorage.getItem("recipeValue") || "[]");
     return this.http.get(`${this.API_URL}${this.recipeValue.id}${this.ANALYZEDINSTRUCTIONS}${this.API_KEY}`);
   }
 }

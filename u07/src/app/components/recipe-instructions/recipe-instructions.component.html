@@ -1,4 +1,6 @@
 <div>
+  <a (click)="backClicked()">Back</a>
+
   <img [src]="recipeValue.image" alt="No image" />
 
   <div (click)="setRecipes(recipeValue.id, recipeValue.title, recipeValue.image)">{{ (setValue) ? 'set' : 'remove'  }}</div>
