@@ -22,14 +22,15 @@ export class SavedRecipesComponent implements OnInit {
 
   ngDoCheck():void {
     this.recipes = this.savedRecipesService.getRecipes();
+    console.log(this.recipes);
   }
 
   removeRecipe(recipeId: number) {
     this.savedRecipesService.removeRecipe(recipeId);
   }
 
-  getInstructions(recipeId: number,title: string, imageUrl: string) {
-    this.recipeInstructionsService.setRecipe(recipeId, title, imageUrl);
+  getInstructions(recipe) {
+    this.recipeInstructionsService.setRecipe(recipe);
     this.redirectTo('/recipes/instructions');
   }
 

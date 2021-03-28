@@ -1,13 +1,26 @@
 <div>
   <a (click)="backClicked()">Back</a>
 
-  <img [src]="recipeValue.image" alt="No image" />
+  <img [src]="recipe.image" alt="No image" />
 
-  <div (click)="setRecipes(recipeValue.id, recipeValue.title, recipeValue.image)">{{ (setValue) ? 'set' : 'remove'  }}</div>
+  <p>{{ recipe.title }}</p>
 
-  <div *ngFor="let ingredient of ingredients" class="">
-    <p class="">{{ ingredient.name }}</p>
+  <div *ngIf="(recipe.nutrition != undefined)" class="">
+    <div *ngFor="let nutrition of recipe.nutrition.ingredients" class="">
+      <p class="">{{ nutrition.name }} - {{ nutrition.amount }} {{ nutrition.unit }}</p>
+    </div>
   </div>
 
-  <p class="mt-3">{{ step }}</p>
+  <div *ngIf="(recipe.nutrition == undefined)" class="">
+    <div *ngFor="let nutrition of recipe.extendedIngredients" class="">
+      <p class="">{{ nutrition.name }} - {{ nutrition.measures.us.amount}} {{ nutrition.measures.us.unitLong }}</p>
+    </div>
+  </div>
+
+  <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps" class="">
+    <p class="">{{ instruction.step }}</p>
+  </div>
+
+  <div (click)="setRecipes(recipe)">{{ (setValue) ? 'set' : 'remove'  }}</div>
+
 </div>

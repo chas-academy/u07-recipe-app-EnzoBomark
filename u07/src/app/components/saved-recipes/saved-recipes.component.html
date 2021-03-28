@@ -2,7 +2,7 @@
   <p *ngIf="(recipes | json) == '[]'">No recipes Saved</p>
   <div *ngIf="(recipes | json) != '[]'">
     <div  *ngFor="let recipe of recipes" class="">
-      <div class="bg-gray-200 p-2 m-1 rounded cursor-pointer" (click)="getInstructions(recipe.id,  recipe.title, recipe.image)" >
+      <div class="bg-gray-200 p-2 m-1 rounded cursor-pointer" (click)="getInstructions(recipe)" >
         <div class="z-50" (click)="removeRecipe(recipe.id)">REMOVE</div>
         <p >{{ recipe.title }}</p>
         <img [src]="recipe.image" [alt]="recipe.title">

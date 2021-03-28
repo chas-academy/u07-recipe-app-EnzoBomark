@@ -9,16 +9,16 @@ export class SavedRecipesService {
 
   constructor() { }
 
-  setRecipes(id:number, title:string, imageUrl:string) {
+  setRecipes(recipe) {
     this.recipes = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
-    if(!this.recipes.find(recipe => recipe.id == id)) this.recipes.push({id: id, title: title, image: imageUrl});
-    else if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
+    if(!this.recipes.find(recipes => recipes.id == recipe.id)) this.recipes.push(recipe);
+    else if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipes => recipes.id != recipe.id);
     localStorage.setItem('savedRecipes', JSON.stringify(this.recipes));
   }
 
   removeRecipe(id:number) {
     this.recipes = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
-    if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipe => recipe.id != id);
+    if(this.recipes.length != 0) this.recipes = this.recipes.filter(recipes => recipes.id != id);
     localStorage.setItem('savedRecipes', JSON.stringify(this.recipes));
   }
 

@@ -19,8 +19,8 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getInstructions(recipeId: number,title: string, imageUrl: string) {
-    this.recipeInstructionsService.setRecipe(recipeId, title, imageUrl);
+  getInstructions() {
+    this.recipeInstructionsService.setRecipe(this.recipe);
     this.redirectTo('/recipes/instructions');
   }
 

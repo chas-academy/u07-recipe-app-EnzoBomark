@@ -10,8 +10,7 @@ import {Location} from '@angular/common';
 export class RecipeInstructionsComponent implements OnInit {
   step: string = 'Sorry we currently have some trubble receiving this recipe';
   setValue:boolean = true;
-  recipeValue;
-  ingredients: Array<object> = [];
+  recipe;
 
   constructor(
     private recipeInstructionsService: RecipeInstructionsService,
@@ -20,20 +19,13 @@ export class RecipeInstructionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.recipeInstructionsService.getRecipe().subscribe(recipes => {
-        if(recipes != ''){
-          let recipeArray = [];
-          Object.values(recipes).forEach(recipe => Object.values(recipe).map(cell => recipeArray.push(cell)));
-          this.step = recipeArray[1][0].step;
-          this.ingredients = recipeArray[1][0].ingredients;
-        }
-      });
   }
 
   ngDoCheck():void {
-    this.recipeValue = this.recipeInstructionsService.getRecipeValues();
+    this.recipe = this.recipeInstructionsService.getRecipeValues();
+    console.log(this.recipe);
     this.savedRecipesService.getRecipes();
-    if(this.savedRecipesService.getRecipes().find(recipe => Object.values(recipe)[0] == this.recipeValue.id)) this.setValue = false;
+    if(this.savedRecipesService.getRecipes().find(recipe => recipe.id == this.recipe.id)) this.setValue = false;
     else this.setValue = true;
   }
 
@@ -41,7 +33,7 @@ export class RecipeInstructionsComponent implements OnInit {
     this._location.back();
   }
 
-  setRecipes(id:number, title:string , imageUrl: string){
-    this.savedRecipesService.setRecipes(id, title, imageUrl);
+  setRecipes(recipe){
+    this.savedRecipesService.setRecipes(recipe);
   }
 }

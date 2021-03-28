@@ -17,10 +17,11 @@ export class ComplexSearchItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.complexSearch);
   }
 
-  getInstructions(recipeId: number,title: string, imageUrl: string) {
-    this.recipeInstructionsService.setRecipe(recipeId, title, imageUrl);
+  getInstructions() {
+    this.recipeInstructionsService.setRecipe(this.complexSearch);
     this.redirectTo('/recipes/instructions');
   }
 
