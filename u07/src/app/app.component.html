@@ -33,42 +33,21 @@
         </div>
       </div>
 
-      <div class="flex flex-col w-4/5 m-5">
-        <h2 class="font-nunito text-xl font-bold mb-2">Type</h2>
-        <input ngModel type="radio" id="all-type" name="type" value="" class="hidden">
-        <label for="all-type" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
-          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
-          </div>
-          <p class="ml-5 font-roboto font-normal">All</p>
-        </label>
-
-        <span *ngFor="let type of this.type">
-          <input ngModel type="radio" id="{{ type }}" name="type" value="{{ type }}" class="hidden">
-          <label for="{{ type }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
-            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
-            </div>
-            <p class="ml-5 font-roboto font-normal">{{ type }}</p>
-          </label>
-        </span>
-      </div>
-
       <div class="flex flex-col w-4/5 my-5">
         <h2 class="font-nunito text-xl font-bold mb-2">Intolerances</h2>
         <input ngModel type="radio" id="all-intolerances" name="intolerances" value="" class="hidden">
         <label for="all-intolerances" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
           <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            <img class="h-7 w-7" src="../assets/images/all.png"/>
           </div>
           <p class="ml-5 font-roboto font-normal">All</p>
         </label>
 
         <span *ngFor="let intolerances of this.intolerances">
-          <input ngModel type="radio" id="{{ intolerances }}" name="intolerances" value="{{ intolerances }}" class="hidden">
+          <input ngModel type="radio" id="{{ intolerances }}" name="intolerances" value="{{ intolerances | lowercase }}" class="hidden">
           <label for="{{ intolerances }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
             <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+              <img class="h-7 w-7" [src]="'../assets/images/'+ intolerances.replace(' ', '').toLowerCase() +'.png'"/>
             </div>
             <p class="ml-5 font-roboto font-normal">{{ intolerances }}</p>
           </label>
@@ -80,18 +59,39 @@
         <input ngModel type="radio" id="all-cuisine" name="cuisine" value="" class="hidden">
         <label for="all-cuisine" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
           <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            <img class="h-7 w-7" src="../assets/images/flags/all.png"/>
           </div>
           <p class="ml-5 font-roboto font-normal">All</p>
         </label>
 
         <span *ngFor="let cuisine of this.cuisine">
-          <input ngModel type="radio" id="{{ cuisine }}" name="cuisine" value="{{ cuisine }}" class="hidden">
+          <input ngModel type="radio" id="{{ cuisine }}" name="cuisine" value="{{ cuisine | lowercase }}" class="hidden">
           <label for="{{ cuisine }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
             <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+              <img class="h-7 w-7" [src]="'../assets/images/flags/'+ cuisine.replace(' ', '').toLowerCase() +'.png'"/>
             </div>
             <p class="ml-5 font-roboto font-normal">{{ cuisine }}</p>
+          </label>
+        </span>
+      </div>
+
+      <div class="flex flex-col w-4/5 m-5">
+        <h2 class="font-nunito text-xl font-bold mb-2">Type</h2>
+        <input ngModel type="radio" id="all-type" name="type" value="" class="hidden">
+        <label for="all-type" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+            <img class="h-7 w-7" src="../assets/images/food/pancake.png"/>
+          </div>
+          <p class="ml-5 font-roboto font-normal">All</p>
+        </label>
+
+        <span *ngFor="let type of this.type">
+          <input ngModel type="radio" id="{{ type }}" name="type" value="{{ type }}" class="hidden">
+          <label for="{{ type }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+              <img class="h-7 w-7" [src]="'../assets/images/food/'+ type.replace(' ', '').toLowerCase() +'.png'"/>
+            </div>
+            <p class="ml-5 font-roboto font-normal">{{ type }}</p>
           </label>
         </span>
       </div>
@@ -111,7 +111,7 @@
           <input ngModel type="radio" id="{{ diet }}" name="diet" value="{{ diet }}" class="hidden">
           <label for="{{ diet }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
             <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
-              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+              <img class="h-7 w-7" [src]="'../assets/images/'+ diet.replace(' ', '').toLowerCase() +'.png'"/>
             </div>
             <p class="ml-5 font-roboto font-normal">{{ diet }}</p>
           </label>
