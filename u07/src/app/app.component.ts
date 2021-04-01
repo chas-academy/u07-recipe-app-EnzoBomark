@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router  } from '@angular/router';
 import { ComplexSearchService } from 'src/app/services/complex-search.service';
 import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
-
+import{ GlobalConstants } from 'src/app/common/global-constants';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +11,49 @@ import { SavedRecipesService } from 'src/app/services/saved-recipes.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title:string = 'Cookalicious';
+  title:string = '';
   savedRecipes:number;
+  backBtnActive: boolean = false;
+
+  type = GlobalConstants.TYPE;
+  intolerances = GlobalConstants.INTOLERANCES;
+  cuisine = GlobalConstants.CUISINE;
+  diet = GlobalConstants.DIET;
 
   constructor(
     private router:Router,
     private complexSearchService:ComplexSearchService,
-    private savedRecipesService:SavedRecipesService
+    private savedRecipesService:SavedRecipesService,
+    private _location: Location,
   ) { }
 
   ngDoCheck() {
+    if(location.pathname != '/') {
+      this.title = ''
+      this.backBtnActive = true;
+    } else {
+      this.title = 'What would you like to Cook?'
+      this.backBtnActive = false;
+    };
     this.savedRecipes = this.savedRecipesService.getRecipes().length;
   }
 
-  getQuery(query: object): void{
-    //Send query to complex search component who will send it to complex-search-service
-    this.complexSearchService.setComplexSearch(query);
+  backClicked() {
+     if(location.pathname != '/') return this._location.back();
+  }
 
-    this.redirectTo('/recipes');
+  showFilter() {
+    if(document.querySelector('.filters').classList.contains('active')) {
+      document.querySelector('.filters').classList.remove('active');
+    } else {
+      document.querySelector('.filters').classList.add('active');
+    }
+  }
+
+  getQuery(query: object): void{
+    console.log(query);
+    // this.complexSearchService.setComplexSearch(query);
+    // this.redirectTo('/recipes');
   }
 
   redirectTo(uri:string){

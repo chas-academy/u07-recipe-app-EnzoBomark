@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,18 +10,51 @@
   padding: 0;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.filters {
+  right: -100vw;
+  -webkit-transform: translate(0vw);
+          transform: translate(0vw);
+}
+
+.filters.active {
+  -webkit-transform: translate(-100vw);
+          transform: translate(-100vw);
+}
+
+.filter-input {
+  height: 60px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-bottom: 15px;
+  background-color: #F9FAFB;
+}
+
+.filter-input:active {
+  background-color: #f3f3f3;
+}
+
+input[type=radio]:checked + label > div {
+  border: 2px solid #111827;
+}
+
+.light-shadow {
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.049), 0 2px 4px -1px rgba(0, 0, 0, 0.022);
+  -webkit-box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+          box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 a {
   color: #333;
   text-decoration: none;
-}
-
-.container {
-  padding: 0 1rem;
 }
 
 .btn {
@@ -32,5 +67,20 @@ a {
 
 .btn:hover {
   background: #666;
+}
+
+#body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+}
+
+#body::-webkit-scrollbar-track {
+  display: none;
+}
+
+#body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: lightgray;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,80 +1,126 @@
-<div>
-  <p><a routerLink="/">LOGO</a></p>
-  <p><a routerLink="/saved-recipes">SavedItems: {{ savedRecipes }}</a></p>
-  <h1>{{ title | uppercase }}</h1>
+<div class="min-h-screen min-w-screen">
+  <div class="flex justify-center w-screen">
+    <div class="w-11/12 flex justify-between">
+      <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" (click)="backClicked()">
+        <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5">
+      </div>
+      <div class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" routerLink="/saved-recipes"><img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5"></div>
+    </div>
+  </div>
 
-  <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" class="mt-10 flex flex-col justify-center items-center">
-    <div class="bg-gray-200 p-3 rounded w-80 relative">
-      <input ngModel type="text" name="query" placeholder="Enter a recipe" class="bg-gray-200 w-4/5 focus:outline-none">
-      <button class="absolute right-3 focus:outline-none">Search</button>
+  <div class="flex justify-center w-screen">
+    <div class="w-11/12 flex justify-between">
+      <h1 class="font-nunito text-3xl font-bold my-5 w-9/12">{{ title }}</h1>
+    </div>
+  </div>
+
+  <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" autocomplete="off" class="min-w-screen mt-5 flex flex-col justify-center items-center">
+    <div class="bg-gray-50 w-11/12 px-5 py-4 rounded-md flex items-center">
+      <button class="focus:outline-none mr-4 w-5 h-5"><img src="../assets/icons/loupe.svg" alt="Search"></button>
+      <input ngModel type="text" name="query" placeholder="Search for recipes..." class="bg-gray-50 w-4/5 focus:outline-none font-roboto">
     </div>
 
-    <div>
-      <label for="type">Choose a type:</label>
-      <select ngModel name="type" id="type">
-      <option value="">All</option>
-      <option value="side dish">Side dish</option>
-      <option value="dessert">Dessert</option>
-      <option value="appetizer">Appetizer</option>
-      <option value="salad">Salad</option>
-      <option value="breakfast">Breakfast</option>
-      <option value="soup">Soup</option>
-      <option value="snack">Snack</option>
-      <option value="drink">Drink</option>
-      </select>
-    </div>
+    <div class="font-roboto text-sm mt-1 w-10/12 text-right cursor-pointer select-none mb-5" (click)="showFilter()">add filters</div>
 
-    <div>
-      <label for="intolerances">Choose intolerances:</label>
-      <select ngModel name="intolerances" id="intolerances">
-      <option value="">All</option>
-      <option value="dairy">Dairy</option>
-      <option value="egg">Egg</option>
-      <option value="gluten">Gluten</option>
-      <option value="peanut">Peanut</option>
-      <option value="seafood">Seafood</option>
-      <option value="shellfish">Shellfish</option>
-      <option value="tree Nut">Tree Nut</option>
-      </select>
-    </div>
 
-    <div>
-      <label for="cuisine">Choose an cuisine:</label>
-      <select ngModel name="cuisine" id="cuisine">
-      <option value="">All</option>
-      <option value="American">American</option>
-      <option value="British">British</option>
-      <option value="Chinese">Chinese</option>
-      <option value="French">French</option>
-      <option value="German">German</option>
-      <option value="Greek">Greek</option>
-      <option value="Indian">Indian</option>
-      <option value="Italian">Italian</option>
-      <option value="Mexican">Mexican</option>
-      <option value="Nordic">Swedish</option>
-      <option value="Thai">Thai</option>
-      <option value="Vietnamese">Vietnamese</option>
-      </select>
-    </div>
+    <!-- ABSOLUTE -->
+    <div class="bg-white absolute w-full min-h-screen top-0 filters flex flex-col items-center justify-start">
 
-    <div>
-      <label for="diet">Choose a diet:</label>
-      <select ngModel name="diet" id="diet">
-      <option value="">All</option>
-      <option value="gluten Free">Gluten Free</option>
-      <option value="ketogenic">Ketogenic</option>
-      <option value="vegetarian">Vegetarian</option>
-      <option value="lacto-Vegetarian">Lacto-Vegetarian</option>
-      <option value="ovo-Vegetarian">Ovo-Vegetarian</option>
-      <option value="vegan">Vegan</option>
-      <option value="pescetarian">Pescetarian</option>
-      <option value="paleo">Paleo</option>
-      <option value="primal">Primal</option>
-      <option value="marinade">marinade</option>
-      <option value="whole30">Whole30</option>
-      </select>
+      <div class="flex justify-center w-screen">
+        <div class="w-11/12 flex justify-between ml-1">
+          <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" (click)="showFilter()"><img src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5"></div>
+          <div class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" routerLink="/saved-recipes"><img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5"></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col w-4/5 m-5">
+        <h2 class="font-nunito text-xl font-bold mb-2">Type</h2>
+        <input ngModel type="radio" id="all-type" name="type" value="" class="hidden">
+        <label for="all-type" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+          </div>
+          <p class="ml-5 font-roboto font-normal">All</p>
+        </label>
+
+        <span *ngFor="let type of this.type">
+          <input ngModel type="radio" id="{{ type }}" name="type" value="{{ type }}" class="hidden">
+          <label for="{{ type }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            </div>
+            <p class="ml-5 font-roboto font-normal">{{ type }}</p>
+          </label>
+        </span>
+      </div>
+
+      <div class="flex flex-col w-4/5 my-5">
+        <h2 class="font-nunito text-xl font-bold mb-2">Intolerances</h2>
+        <input ngModel type="radio" id="all-intolerances" name="intolerances" value="" class="hidden">
+        <label for="all-intolerances" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+          </div>
+          <p class="ml-5 font-roboto font-normal">All</p>
+        </label>
+
+        <span *ngFor="let intolerances of this.intolerances">
+          <input ngModel type="radio" id="{{ intolerances }}" name="intolerances" value="{{ intolerances }}" class="hidden">
+          <label for="{{ intolerances }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            </div>
+            <p class="ml-5 font-roboto font-normal">{{ intolerances }}</p>
+          </label>
+        </span>
+      </div>
+
+      <div class="flex flex-col w-4/5 my-5">
+        <h2 class="font-nunito text-xl font-bold mb-2">Cuisine</h2>
+        <input ngModel type="radio" id="all-cuisine" name="cuisine" value="" class="hidden">
+        <label for="all-cuisine" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+          </div>
+          <p class="ml-5 font-roboto font-normal">All</p>
+        </label>
+
+        <span *ngFor="let cuisine of this.cuisine">
+          <input ngModel type="radio" id="{{ cuisine }}" name="cuisine" value="{{ cuisine }}" class="hidden">
+          <label for="{{ cuisine }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            </div>
+            <p class="ml-5 font-roboto font-normal">{{ cuisine }}</p>
+          </label>
+        </span>
+      </div>
+
+      <div class="flex flex-col w-4/5 my-5">
+        <h2 class="font-nunito text-xl font-bold mb-2">Diet</h2>
+
+        <input ngModel type="radio" id="all-diet" name="diet" value="" class="hidden">
+        <label for="all-diet" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+          <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+            <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+          </div>
+          <p class="ml-5 font-roboto font-normal">All</p>
+        </label>
+
+        <span *ngFor="let diet of this.diet">
+          <input ngModel type="radio" id="{{ diet }}" name="diet" value="{{ diet }}" class="hidden">
+          <label for="{{ diet }}" class="filter-input light-shadow light-shadow flex items-center px-2 focus:outline-none">
+            <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
+              <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
+            </div>
+            <p class="ml-5 font-roboto font-normal">{{ diet }}</p>
+          </label>
+        </span>
+      </div>
     </div>
+    <!-- END ABSOLUTE -->
+
  </form>
+ <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
