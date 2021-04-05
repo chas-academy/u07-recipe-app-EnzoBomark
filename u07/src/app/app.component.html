@@ -24,7 +24,7 @@
 
 
     <!-- ABSOLUTE -->
-    <div class="bg-white absolute w-full min-h-screen top-0 filters flex flex-col items-center justify-start">
+    <div class="bg-white absolute w-full min-h-screen top-0 filters flex flex-col items-center justify-start z-50">
 
       <div class="flex justify-center w-screen">
         <div class="w-11/12 flex justify-between ml-1">
@@ -40,7 +40,7 @@
           <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
             <img class="h-7 w-7" src="../assets/images/all.png"/>
           </div>
-          <p class="ml-5 font-roboto font-normal">All</p>
+          <p class="ml-5 font-roboto font-normal">None</p>
         </label>
 
         <span *ngFor="let intolerances of this.intolerances">
@@ -104,7 +104,7 @@
           <div class="bg-white rounded-lg light-shadow h-10 w-10 flex justify-center items-center radio">
             <img class="h-7 w-7" src="../assets/images/food/hamburger_1f354.png"/>
           </div>
-          <p class="ml-5 font-roboto font-normal">All</p>
+          <p class="ml-5 font-roboto font-normal">None</p>
         </label>
 
         <span *ngFor="let diet of this.diet">

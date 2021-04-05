@@ -52,8 +52,8 @@ export class AppComponent {
 
   getQuery(query: object): void{
     console.log(query);
-    // this.complexSearchService.setComplexSearch(query);
-    // this.redirectTo('/recipes');
+    this.complexSearchService.setComplexSearch(query);
+    this.redirectTo('/recipes');
   }
 
   redirectTo(uri:string){

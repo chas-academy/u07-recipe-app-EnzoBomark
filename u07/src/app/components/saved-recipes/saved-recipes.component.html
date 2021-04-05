@@ -1,11 +1,34 @@
-<div>
-  <p *ngIf="(recipes | json) == '[]'">No recipes Saved</p>
-  <div *ngIf="(recipes | json) != '[]'">
+<div class="min-w-screen flex flex-col items-center">
+  <h2 *ngIf="(recipes | json) == '[]'" class="w-11/12 font-nunito text-xl font-bold ml-2">No recipes Saved</h2>
+  <div class="w-full flex flex-col items-center" *ngIf="(recipes | json) != '[]'">
+  <h2 class="w-11/12 font-nunito text-xl font-bold ml-2">Saved recipes</h2>
     <div  *ngFor="let recipe of recipes" class="">
-      <div class="bg-gray-200 p-2 m-1 rounded cursor-pointer" (click)="getInstructions(recipe)" >
-        <div class="z-50" (click)="removeRecipe(recipe.id)">REMOVE</div>
-        <p >{{ recipe.title }}</p>
-        <img [src]="recipe.image" [alt]="recipe.title">
+      <div class="w-screen flex justify-center mb-2">
+        <div class="bg-gray-50 w-11/12 p-2 m-1 rounded-xl light-shadow cursor-pointer flex relative" (click)="getInstructions()">
+          <img (click)="removeRecipe(recipe.id)" src="../assets/icons/star-yellow.svg" alt="star"  class="w-4 h-4 absolute right-3 top-3">
+          <img [src]="recipe.image" class="w-24 h-32 object-cover rounded-xl light-shadow ">
+          <div class="ml-2 w-full flex flex-col justify-between">
+            <p class="w-10/12 h-6 overflow-hidden">{{ recipe.title }}</p>
+            <div  class="flex mb-8">
+              <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+                <img src="../assets/images/vegan.png" alt="vegan"  class="w-4 h-4">
+              </div>
+              <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+                <img src="../assets/images/vegetarian.png" alt="vegetarian"  class="w-4 h-4">
+              </div>
+              <div *ngIf="recipe.glutenFree" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+                <img src="../assets/images/glutenfree.png" alt="glutenFree"  class="w-4 h-4">
+              </div>
+              <div *ngIf="recipe.lowFodmap" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+                <img src="../assets/images/chicken.png" alt="lowFodmap"  class="w-4 h-4">
+              </div>
+            </div>
+            <div class="ml-2 flex">
+              <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
+              <p class="ml-1 text-xs leading-relaxed font-semibold text-gray-400 ">{{ recipe.readyInMinutes }} min</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
