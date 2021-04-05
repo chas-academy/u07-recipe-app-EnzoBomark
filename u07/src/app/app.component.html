@@ -4,7 +4,7 @@
       <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" (click)="backClicked()">
         <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5">
       </div>
-      <div class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" routerLink="/saved-recipes"><img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5"></div>
+      <div ngClass="{{ this.savedBtnActive ? 'opacity-10' : 'opacity-100' }}" class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 focus:outline-none" routerLink="/saved-recipes"><img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5"></div>
     </div>
   </div>
 

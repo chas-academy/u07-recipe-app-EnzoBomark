@@ -1,24 +1,51 @@
-<div>
-  <img [src]="recipe.image" alt="No image" />
+<div class="w-screen flex flex-col items-center">
+  <div class="w-11/12">
+    <div class="relative">
+      <div class="absolute w-full h-full bg-gradient-to-t from-black opacity-40 rounded-xl"></div>
+      <div class="ml-4 flex absolute bottom-1">
+        <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
+        <p class="ml-1 text-xs leading-relaxed font-semibold text-gray-300 ">{{ recipe.readyInMinutes }} min</p>
+      </div>
+      <div class="absolute w-9 h-9 bg-white rounded-full light-shadow right-3 top-3 flex justify-center items-center cursor-pointer transform hover:scale-105">
+        <img *ngIf="setValue == false" (click)="setRecipes(recipe)" src="../assets/icons/star-yellow.svg" alt="star" class="w-4 h-4">
+        <img *ngIf="setValue == true" (click)="setRecipes(recipe)" src="../assets/icons/star.svg" alt="star"  class="w-4 h-4 opacity-10">
+      </div>
+      <img class="w-full h-32 object-cover rounded-xl light-shadow" [src]="recipe.image" alt="No image">
+    </div>
 
-  <p>{{ recipe.title }}</p>
+    <p>{{ recipe.title }}</p>
 
-  <div *ngIf="(recipe.nutrition != undefined)" class="">
-    <div *ngFor="let nutrition of recipe.nutrition.ingredients" class="">
-      <p class="">{{ nutrition.name }} - {{ nutrition.amount }} {{ nutrition.unit }}</p>
+    <div  class="flex mb-8">
+      <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+        <img src="../assets/images/vegan.png" alt="vegan"  class="w-4 h-4">
+      </div>
+      <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+        <img src="../assets/images/vegetarian.png" alt="vegetarian"  class="w-4 h-4">
+      </div>
+      <div *ngIf="recipe.glutenFree" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+        <img src="../assets/images/glutenfree.png" alt="glutenFree"  class="w-4 h-4">
+      </div>
+      <div *ngIf="recipe.lowFodmap" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+        <img src="../assets/images/chicken.png" alt="lowFodmap"  class="w-4 h-4">
+      </div>
+    </div>
+
+    <b>Ingrediants</b>
+    <div *ngIf="(recipe.nutrition != undefined)" class="">
+      <div *ngFor="let nutrition of recipe.nutrition.ingredients" class="">
+        <p class="">{{ nutrition.name }} - {{ nutrition.amount }} {{ nutrition.unit }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="(recipe.nutrition == undefined)" class="">
+      <div *ngFor="let nutrition of recipe.extendedIngredients" class="">
+        <p class="">{{ nutrition.name }} - {{ nutrition.measures.us.amount}} {{ nutrition.measures.us.unitLong }}</p>
+      </div>
+    </div>
+
+    <b>Instruction</b>
+    <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps" class="">
+      <p class="">{{ instruction.step }}</p>
     </div>
   </div>
-
-  <div *ngIf="(recipe.nutrition == undefined)" class="">
-    <div *ngFor="let nutrition of recipe.extendedIngredients" class="">
-      <p class="">{{ nutrition.name }} - {{ nutrition.measures.us.amount}} {{ nutrition.measures.us.unitLong }}</p>
-    </div>
-  </div>
-
-  <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps" class="">
-    <p class="">{{ instruction.step }}</p>
-  </div>
-
-  <div (click)="setRecipes(recipe)">{{ (setValue) ? 'set' : 'remove'  }}</div>
-
 </div>

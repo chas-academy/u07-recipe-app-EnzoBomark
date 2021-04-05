@@ -14,6 +14,7 @@ export class AppComponent {
   title:string = '';
   savedRecipes:number;
   backBtnActive: boolean = false;
+  savedBtnActive: boolean = false;
 
   type = GlobalConstants.TYPE;
   intolerances = GlobalConstants.INTOLERANCES;
@@ -35,6 +36,8 @@ export class AppComponent {
       this.title = 'What would you like to Cook?'
       this.backBtnActive = false;
     };
+    if(location.pathname == '/saved-recipes') this.savedBtnActive = true;
+    else this.savedBtnActive = false;
     this.savedRecipes = this.savedRecipesService.getRecipes().length;
   }
 

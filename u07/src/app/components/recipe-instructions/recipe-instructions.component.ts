@@ -21,8 +21,6 @@ export class RecipeInstructionsComponent implements OnInit {
 
   ngDoCheck():void {
     this.recipe = this.recipeInstructionsService.getRecipeValues();
-    // console.log(this.recipe);
-    // this.savedRecipesService.getRecipes();
     if(this.savedRecipesService.getRecipes().find(recipe => recipe.id == this.recipe.id)) this.setValue = false;
     else this.setValue = true;
   }
