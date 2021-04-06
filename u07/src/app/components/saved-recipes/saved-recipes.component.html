@@ -8,8 +8,8 @@
           <img (click)="removeRecipe(recipe.id)" src="../assets/icons/star-yellow.svg" alt="star"  class="w-4 h-4 absolute right-3 top-3">
           <img [src]="recipe.image" class="w-24 h-32 object-cover rounded-xl light-shadow ">
           <div class="ml-2 w-full flex flex-col justify-between">
-            <p class="w-10/12 h-6 overflow-hidden">{{ recipe.title }}</p>
-            <div  class="flex mb-8">
+            <p class="w-10/12 h-6 overflow-hidden font-roboto mt-1">{{ recipe.title }}</p>
+            <div  class="flex mb-9">
               <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
                 <img src="../assets/images/vegan.png" alt="vegan"  class="w-4 h-4">
               </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="ml-2 flex">
               <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
-              <p class="ml-1 text-xs leading-relaxed font-semibold text-gray-400 ">{{ recipe.readyInMinutes }} min</p>
+              <p class="ml-1 text-xs leading-relaxed font-normal text-gray-400 font-roboto">{{ recipe.readyInMinutes }} min</p>
             </div>
           </div>
         </div>

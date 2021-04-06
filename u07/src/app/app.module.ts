@@ -13,18 +13,22 @@ import { ComplexSearchItemComponent } from './components/complex-search-item/com
 import { HomeComponent } from './components/home/home.component';
 import { RecipeInstructionsComponent } from './components/recipe-instructions/recipe-instructions.component';
 import { SavedRecipesComponent } from './components/saved-recipes/saved-recipes.component';
+import { RoundPipe } from './pipes/round.pipe';
+import { ListItemComponent } from './components/list-item/list-item.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    RoundPipe,
     RecipesComponent,
     RecipeItemComponent,
     ComplexSearchComponent,
     ComplexSearchItemComponent,
     HomeComponent,
     RecipeInstructionsComponent,
-    SavedRecipesComponent
+    SavedRecipesComponent,
+    ListItemComponent
   ],
   imports: [
     AppRoutingModule,

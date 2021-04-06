@@ -6,46 +6,55 @@
         <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
         <p class="ml-1 text-xs leading-relaxed font-semibold text-gray-300 ">{{ recipe.readyInMinutes }} min</p>
       </div>
-      <div class="absolute w-9 h-9 bg-white rounded-full light-shadow right-3 top-3 flex justify-center items-center cursor-pointer transform hover:scale-105">
-        <img *ngIf="setValue == false" (click)="setRecipes(recipe)" src="../assets/icons/star-yellow.svg" alt="star" class="w-4 h-4">
-        <img *ngIf="setValue == true" (click)="setRecipes(recipe)" src="../assets/icons/star.svg" alt="star"  class="w-4 h-4 opacity-10">
+      <div (click)="setRecipes(recipe)" class="absolute w-9 h-9 bg-white rounded-full light-shadow right-3 top-3 flex justify-center items-center cursor-pointer transform hover:scale-105">
+        <img *ngIf="setValue == false" src="../assets/icons/star-yellow.svg" alt="star" class="w-4 h-4">
+        <img *ngIf="setValue == true" src="../assets/icons/star.svg" alt="star"  class="w-4 h-4 opacity-10">
       </div>
       <img class="w-full h-32 object-cover rounded-xl light-shadow" [src]="recipe.image" alt="No image">
     </div>
 
-    <p>{{ recipe.title }}</p>
+    <h2 class="font-roboto text-2xl mt-2 ml-2">{{ recipe.title }}</h2>
 
-    <div  class="flex mb-8">
-      <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
-        <img src="../assets/images/vegan.png" alt="vegan"  class="w-4 h-4">
+    <div  class="flex mb-8 mt-2">
+      <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-11 h-11 rounde-2xl light-shadow ml-2">
+        <img src="../assets/images/vegan.png" alt="vegan"  class="w-6 h-6">
       </div>
-      <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
-        <img src="../assets/images/vegetarian.png" alt="vegetarian"  class="w-4 h-4">
+      <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-11 h-11 rounded-2xl light-shadow ml-2">
+        <img src="../assets/images/vegetarian.png" alt="vegetarian"  class="w-6 h-6">
       </div>
-      <div *ngIf="recipe.glutenFree" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
-        <img src="../assets/images/glutenfree.png" alt="glutenFree"  class="w-4 h-4">
+      <div *ngIf="recipe.glutenFree" class="flex justify-center items-center bg-white w-11 h-11 rounded-2xl light-shadow ml-2">
+        <img src="../assets/images/glutenfree.png" alt="glutenFree"  class="w-6 h-6">
       </div>
-      <div *ngIf="recipe.lowFodmap" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
-        <img src="../assets/images/chicken.png" alt="lowFodmap"  class="w-4 h-4">
+      <div *ngIf="recipe.lowFodmap" class="flex justify-center items-center bg-white w-11 h-11 rounded-xl light-shadow ml-2">
+        <img src="../assets/images/chicken.png" alt="lowFodmap"  class="w-6 h-6">
       </div>
     </div>
 
-    <b>Ingrediants</b>
-    <div *ngIf="(recipe.nutrition != undefined)" class="">
+    <h2 class="font-nunito text-xl font-bold ml-2 mb-2">Ingredients</h2>
+    <div *ngIf="(recipe.nutrition != undefined)" class="ml-2">
       <div *ngFor="let nutrition of recipe.nutrition.ingredients" class="">
-        <p class="">{{ nutrition.name }} - {{ nutrition.amount }} {{ nutrition.unit }}</p>
+        <div class="flex mb-1">
+          <div class="w-2 h-2 mt-2 mr-2 rounded-sm bg-gray-900"></div>
+          <p class="leading-tight font-roboto">{{ nutrition.name | titlecase }} - {{ nutrition.amount | round }} {{ nutrition.unit }}</p>
+        </div>
       </div>
     </div>
 
-    <div *ngIf="(recipe.nutrition == undefined)" class="">
+    <div *ngIf="(recipe.nutrition == undefined)" class="ml-2">
       <div *ngFor="let nutrition of recipe.extendedIngredients" class="">
-        <p class="">{{ nutrition.name }} - {{ nutrition.measures.us.amount}} {{ nutrition.measures.us.unitLong }}</p>
+        <div class="flex mb-1">
+          <div class="w-2 h-2 mt-2 mr-2 rounded-sm bg-gray-900"></div>
+          <p class="leading-tight font-roboto">{{ nutrition.originalName | titlecase }} - {{ nutrition.amount }} {{ nutrition.unit }}</p>
+        </div>
       </div>
     </div>
 
-    <b>Instruction</b>
-    <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps" class="">
-      <p class="">{{ instruction.step }}</p>
+    <h2 class="font-nunito text-xl font-bold ml-2 mt-5 mb-1">Directions</h2>
+    <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps; let i = index" [attr.data-index]="i" class="ml-2">
+      <div class="flex mb-2">
+        <div class="w-8 h-8 mt-2 mr-2 rounded-md bg-gray-900 flex justify-center items-center"><p class="text-white font-nunito text-xl font-semibold">{{ i + 1 }}</p></div>
+        <p class="ml-2 w-9/12 mt-1 font-roboto">{{ instruction.step | titlecase }}</p>
+      </div>
     </div>
   </div>
 </div>
