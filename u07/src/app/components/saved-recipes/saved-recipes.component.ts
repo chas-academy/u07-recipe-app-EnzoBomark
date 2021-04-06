@@ -22,6 +22,5 @@ export class SavedRecipesComponent implements OnInit {
 
   ngDoCheck():void {
     this.recipes = this.savedRecipesService.getRecipes();
-    console.log(this.recipes);
   }
 }

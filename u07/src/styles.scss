@@ -15,8 +15,16 @@
   font-family: 'Nunito', sans-serif;
 }
 
+
 .font-roboto{
   font-family: 'Roboto', sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-h-124 {
+    height: 450px;
+    width: 450px;
+  }
 }
 
 .filter-input{

@@ -1,12 +1,20 @@
 <div class="h-full text-gray-900">
   <div class="flex justify-center w-full">
     <div class="w-11/12 flex justify-between">
-      <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer" (click)="backClicked()">
-        <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5">
+      <div class="flex">
+        <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer" (click)="backClicked()">
+          <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5">
+        </div>
+
+        <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer ml-5 focus:outline-none" routerLink="/">
+          <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/home.svg" alt="Back" class="w-2/5 h-2/5">
+        </div>
       </div>
+
       <div ngClass="{{ this.savedBtnActive ? 'opacity-10' : 'opacity-100' }}" class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 focus:outline-none cursor-pointer" routerLink="/saved-recipes">
         <img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5">
       </div>
+
     </div>
   </div>
 
@@ -23,7 +31,6 @@
     </div>
 
     <div class="font-roboto text-sm mt-1 w-10/12 text-right cursor-pointer select-none mb-5" (click)="showFilter()">add filters</div>
-
 
     <!-- ABSOLUTE -->
     <div *ngIf="filterBtnActive" class="bg-white w-screen max-w-screen-xl absolute top-0 flex flex-col items-center z-50">
