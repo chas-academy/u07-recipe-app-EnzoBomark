@@ -19,15 +19,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.filters{
-  right: -100vw;
-  transform: translate(0vw);
-}
-
-.filters.active{
-  transform: translate(-100vw);
-}
-
 .filter-input{
   height: 60px;
   width: 100%;

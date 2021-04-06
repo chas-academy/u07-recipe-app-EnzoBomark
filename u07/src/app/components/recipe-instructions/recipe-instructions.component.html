@@ -1,4 +1,4 @@
-<div class="w-screen flex flex-col items-center">
+<div class="w-full flex flex-col items-center">
   <div class="w-11/12">
     <div class="relative">
       <div class="absolute w-full h-full bg-gradient-to-t from-black opacity-40 rounded-xl"></div>
@@ -16,7 +16,7 @@
     <h2 class="font-roboto text-2xl mt-2 ml-2">{{ recipe.title }}</h2>
 
     <div  class="flex mb-8 mt-2">
-      <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-11 h-11 rounde-2xl light-shadow ml-2">
+      <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-11 h-11 rounded-2xl light-shadow ml-2">
         <img src="../assets/images/vegan.png" alt="vegan"  class="w-6 h-6">
       </div>
       <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-11 h-11 rounded-2xl light-shadow ml-2">

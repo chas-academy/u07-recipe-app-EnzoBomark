@@ -24,18 +24,4 @@ export class SavedRecipesComponent implements OnInit {
     this.recipes = this.savedRecipesService.getRecipes();
     console.log(this.recipes);
   }
-
-  removeRecipe(recipeId: number) {
-    this.savedRecipesService.removeRecipe(recipeId);
-  }
-
-  getInstructions(recipe) {
-    this.recipeInstructionsService.setRecipe(recipe);
-    this.redirectTo('/recipes/instructions');
-  }
-
-  redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
- }
 }

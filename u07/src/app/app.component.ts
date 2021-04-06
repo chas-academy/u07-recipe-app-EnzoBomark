@@ -15,6 +15,7 @@ export class AppComponent {
   savedRecipes:number;
   backBtnActive: boolean = false;
   savedBtnActive: boolean = false;
+  filterBtnActive: boolean = false;
 
   type = GlobalConstants.TYPE;
   intolerances = GlobalConstants.INTOLERANCES;
@@ -46,11 +47,7 @@ export class AppComponent {
   }
 
   showFilter() {
-    if(document.querySelector('.filters').classList.contains('active')) {
-      document.querySelector('.filters').classList.remove('active');
-    } else {
-      document.querySelector('.filters').classList.add('active');
-    }
+    this.filterBtnActive = !this.filterBtnActive;
   }
 
   getQuery(query: object): void{

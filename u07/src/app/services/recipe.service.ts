@@ -3,17 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/Recipe';
 import { Observable } from 'rxjs';
 import{ GlobalConstants } from '../common/global-constants';
-
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class RecipeService {
   //RANDOM LIST
   recipesUrl:string = 'https://api.spoonacular.com/recipes/random';
   // recipesUrl:string = '';
   API_KEY:string = GlobalConstants.API_KEY;
-  number:string = '?number=10'
+  number:string = '?number=25'
   includeNutrition:string = '&includeNutrition=true'
 
   constructor(private http: HttpClient) { }

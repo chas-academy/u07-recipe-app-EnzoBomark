@@ -1,5 +1,5 @@
-<div class="min-h-screen min-w-screen">
-  <div class="flex justify-center w-screen">
+<div class="h-full text-gray-900">
+  <div class="flex justify-center w-full">
     <div class="w-11/12 flex justify-between">
       <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer" (click)="backClicked()">
         <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5">
@@ -10,13 +10,13 @@
     </div>
   </div>
 
-  <div class="flex justify-center w-screen">
+  <div class="flex justify-center w-full">
     <div class="w-11/12 flex justify-between">
       <h1 class="font-nunito text-3xl font-bold my-5 w-9/12">{{ title }}</h1>
     </div>
   </div>
 
-  <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" autocomplete="off" class="min-w-screen mt-5 flex flex-col justify-center items-center">
+  <form #searchForm="ngForm" (ngSubmit)="getQuery(searchForm.value)" autocomplete="off" class="min-w-full mt-5 flex flex-col justify-center items-center">
     <div class="bg-gray-50 w-11/12 px-5 py-4 rounded-md flex items-center">
       <button class="focus:outline-none mr-4 w-5 h-5"><img src="../assets/icons/loupe.svg" alt="Search"></button>
       <input ngModel type="text" name="query" placeholder="Search for recipes..." class="bg-gray-50 w-4/5 focus:outline-none font-roboto">
@@ -26,10 +26,10 @@
 
 
     <!-- ABSOLUTE -->
-    <div class="bg-white absolute w-full min-h-screen top-0 filters flex flex-col items-center justify-start z-50">
+    <div *ngIf="filterBtnActive" class="bg-white w-screen max-w-screen-xl absolute top-0 flex flex-col items-center z-50">
 
-      <div class="flex justify-center w-screen">
-        <div class="w-11/12 flex justify-between ml-1">
+      <div class="flex justify-center w-full">
+        <div class="w-11/12 flex justify-between">
           <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" (click)="showFilter()"><img src="../assets/icons/left-arrow.svg" alt="Back" class="w-2/5 h-2/5"></div>
           <div class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5" routerLink="/saved-recipes"><img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5"></div>
         </div>
@@ -123,6 +123,7 @@
     <!-- END ABSOLUTE -->
 
  </form>
- <router-outlet></router-outlet>
+ <router-outlet *ngIf="!filterBtnActive"></router-outlet>
+ <app-footer *ngIf="!filterBtnActive"></app-footer>
 </div>
 

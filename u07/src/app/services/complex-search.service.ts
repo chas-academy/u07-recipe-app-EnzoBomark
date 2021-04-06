@@ -18,7 +18,7 @@ export class ComplexSearchService {
   instructionsRequired:string = '&instructionsRequired=true'
 
   //QUERYS//
-  NUMBER:string = '?number=10';
+  NUMBER:string = '?number=50';
 
   QUERY:string = '&query=';
   queryValue:string = '';
