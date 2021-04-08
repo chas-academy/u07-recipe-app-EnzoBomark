@@ -15,6 +15,7 @@ export class AppComponent {
   savedRecipes:number;
   backBtnActive: boolean = false;
   savedBtnActive: boolean = false;
+  addBtnActive: boolean = false;
   filterBtnActive: boolean = false;
 
   type = GlobalConstants.TYPE;
@@ -37,8 +38,10 @@ export class AppComponent {
       this.title = 'What would you like to Cook?'
       this.backBtnActive = false;
     };
-    if(location.pathname == '/saved-recipes') this.savedBtnActive = true;
-    else this.savedBtnActive = false;
+    if(location.pathname == '/saved-recipes') this.savedBtnActive = false;
+    else this.savedBtnActive = true;
+    if(location.pathname == '/add-recipe') this.addBtnActive = false;
+    else this.addBtnActive = true;
     this.savedRecipes = this.savedRecipesService.getRecipes().length;
   }
 
