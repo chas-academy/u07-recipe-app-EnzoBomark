@@ -3,7 +3,7 @@
     <img *ngIf="setValue == false" (click)="setRecipes(recipe)" src="../assets/icons/star-yellow.svg" alt="star" class="w-4 h-4 absolute right-3 top-3 cursor-pointer transform hover:scale-110">
     <img *ngIf="setValue == true" (click)="setRecipes(recipe)" src="../assets/icons/star.svg" alt="star"  class="w-4 h-4 absolute right-3 top-3 opacity-10 cursor-pointer transform hover:scale-110">
     <div class="bg-gray-50 w-full h-full p-2 rounded-xl light-shadow cursor-pointer flex " (click)="getInstructions()">
-      <img [src]="recipe.image" [alt]="recipe.title" class="w-24 h-32 object-cover rounded-xl light-shadow ">
+      <img [src]="recipe.image" class="w-24 h-32 object-cover rounded-xl light-shadow ">
       <div class="ml-2 w-full flex flex-col justify-between">
         <p class="w-10/12 h-6 overflow-hidden font-roboto mt-1">{{ recipe.title }}</p>
         <div  class="flex mb-9">
@@ -22,7 +22,7 @@
         </div>
         <div class="ml-2 flex">
           <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
-          <p class="ml-1 text-xs leading-relaxed font-normal text-gray-600 font-roboto">{{ recipe.readyInMinutes }} min</p>
+          <p class="ml-1 text-xs leading-relaxed font-normal text-gray-400 font-roboto">{{ recipe.readyInMinutes }} min</p>
         </div>
       </div>
     </div>
