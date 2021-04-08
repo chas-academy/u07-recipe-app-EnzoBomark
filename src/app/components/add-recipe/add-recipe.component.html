@@ -1,0 +1,61 @@
+<div>
+  <div class="min-w-full flex flex-col items-center">
+    <h2 class="w-11/12 font-nunito text-xl font-bold ml-2 mb-2">Add recipes to Saved</h2>
+    <form #addForm="ngForm" (ngSubmit)="getQuery(addForm.value)" autocomplete="off"  class="w-full flex flex-col items-center">
+
+
+
+      <input ngModel type="text"  name="title" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md mb-5 light-shadow font-roboto focus:outline-none" placeholder="Title">
+
+      <input ngModel type="number" name="readyInMinutes" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md light-shadow font-roboto focus:outline-none" placeholder="Ready in min">
+
+      <div class="flex w-11/12 mt-5">
+        <div class="flex">
+          <div class="bg-gray-50 w-10 h-10 rounded-md mr-5 mb-4 flex justify-center items-center light-shadow" (click)="addIngredient()"><img src="../../assets/icons/add.svg" alt="add" class="h-4 w-4"></div>
+          <div class="bg-gray-50 w-10 h-10 rounded-md mb-4 flex justify-center items-center light-shadow" (click)="removeIngredient()"><img src="../../assets/icons/minus.svg" alt="minus" class="h-4 w-4"></div>
+        </div>
+      </div>
+      <div id="ingredients" class="flex w-full flex-col items-center">
+        <div class="flex justify-between w-11/12">
+          <input type="text" class="bg-gray-50 w-8/12 px-5 py-4 rounded-md ingredient mb-3 light-shadow font-roboto mr-5 focus:outline-none" placeholder="Add ingredient">
+          <input type="text" class="bg-gray-50 w-4/12 px-5 py-4 rounded-md amount mb-3 light-shadow font-roboto focus:outline-none" placeholder="Amount">
+        </div>
+      </div>
+
+      <div class="flex w-11/12 mt-5">
+        <div class="flex">
+          <div class="bg-gray-50 w-10 h-10 rounded-md mr-5 mb-4 flex justify-center items-center light-shadow" (click)="addDirection()"><img src="../../assets/icons/add.svg" alt="add"  class="h-4 w-4"></div>
+          <div class="bg-gray-50 w-10 h-10 rounded-md mb-4 flex justify-center items-center light-shadow" (click)="removeDirection()"><img src="../../assets/icons/minus.svg" alt="minus" class="h-4 w-4"></div>
+        </div>
+      </div>
+      <div id="directions" class="flex w-full flex-col items-center">
+        <input type="text" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md direction mb-3 light-shadow font-roboto focus:outline-none" placeholder="Add direction">
+      </div>
+
+      <div class="w-11/12 mt-5">
+        <input type="file" (change)="selectFile($event)" class="bg-gray-800 p-2 text-white rounded-md light-shadow">
+      </div>
+
+      <div class="flex flex-col w-11/12 mt-5 ml-2">
+        <div>
+          <input ngModel class="mr-2" type="checkbox" id="vegan" name="vegan">
+          <label for="vegan">Vegan</label>
+        </div>
+        <div>
+          <input ngModel class="mr-2" type="checkbox" id="vegetarian" name="vegetarian">
+          <label for="vegetarian">Vegetarian</label>
+        </div>
+        <div>
+          <input ngModel class="mr-2" type="checkbox" id="lowFodmap" name="lowFodmap">
+          <label for="lowFodmap">LowFodmap</label>
+        </div>
+        <div>
+          <input ngModel class="mr-2" type="checkbox" id="glutenFree" name="glutenFree">
+          <label for="glutenFree">Gluten Free</label>
+        </div>
+      </div>
+
+      <button id="submitRecipe" class="w-4/5 py-3 mt-20 mb-20 bg-gray-800 rounded-md light-shadow font-roboto focus:outline-none text-white">Submit</button>
+    </form>
+  </div>
+</div>
