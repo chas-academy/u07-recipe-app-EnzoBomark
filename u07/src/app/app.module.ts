@@ -15,7 +15,8 @@ import { RecipeInstructionsComponent } from './components/recipe-instructions/re
 import { SavedRecipesComponent } from './components/saved-recipes/saved-recipes.component';
 import { RoundPipe } from './pipes/round.pipe';
 import { ListItemComponent } from './components/list-item/list-item.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { AddRecipeComponent } from './components/add-recipe/add-recipe.component'
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component'
     RecipeInstructionsComponent,
     SavedRecipesComponent,
     ListItemComponent,
-    FooterComponent
+    FooterComponent,
+    AddRecipeComponent
   ],
   imports: [
     AppRoutingModule,

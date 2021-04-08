@@ -9,9 +9,13 @@
         <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer ml-5 focus:outline-none" routerLink="/">
           <img  ngClass="{{ this.backBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/home.svg" alt="Back" class="w-2/5 h-2/5">
         </div>
+
+        <div Class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 cursor-pointer ml-5 focus:outline-none" routerLink="/add-recipe">
+          <img  ngClass="{{ this.addBtnActive ? 'opacity-100' : 'opacity-10' }}" src="../assets/icons/plus.svg" alt="Back" class="w-2/5 h-2/5">
+        </div>
       </div>
 
-      <div ngClass="{{ this.savedBtnActive ? 'opacity-10' : 'opacity-100' }}" class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 focus:outline-none cursor-pointer" routerLink="/saved-recipes">
+      <div ngClass="{{ this.savedBtnActive ? 'opacity-100' : 'opacity-10' }}" class="h-12 w-12 rounded-xl light-shadow bg-white flex justify-center items-center mt-5 focus:outline-none cursor-pointer" routerLink="/saved-recipes">
         <img src="../assets/icons/star.svg" alt="Star" class="w-2/5 h-2/5">
       </div>
 
