@@ -1,14 +1,15 @@
-#u07-EnzoBomark
 u07 - created by GitHub Classroom
 
 ## Install
 
-1. Change root/src/app/common/global-constants.example.ts to global-constants.ts
+1. npm install
 
-2. Add spoonacular API_KEY 
+2. Add dotenv
 
-3. Run `ng build`.
+3. Add spoonacular API_KEY 
 
-4. Open dist and open index.html
+4. Run `ng build`.
 
-5. Done, Enjoy!
+5. Open dist and open index.html
+
+6. Done, Enjoy!
