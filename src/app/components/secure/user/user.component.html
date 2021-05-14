@@ -1,0 +1,19 @@
+<div>
+
+  <h1 class="font-nunito text-3xl font-bold pl-3 pt-5 w-9/12">{{ user?.name }}</h1>
+  
+  <form [formGroup]='watchlistForm' (submit)="submit()">
+    
+    <input  class="w-46 bg-gray-50 rounded-lg h-8 p-5 mr-5"placeholder="List Name" formControlName="name">
+    
+    <button  class="h-8 px-3 bg-gray-800 text-white rounded-lg mb-2">Submit</button>
+  </form>
+
+  <h2 class="font-nunito text-xl font-bold pl-3 pt-5 w-9/12">Saved Lists</h2>
+  
+  <p *ngIf="error" class="text-red-500">{{ error }}</p>
+
+  <div *ngFor="let list of lists" class="pl-3 my-3 cursor-pointer">
+    <a (click)="getList(list.name, list.id)" >{{list.name}}</a>
+  </div>
+</div>

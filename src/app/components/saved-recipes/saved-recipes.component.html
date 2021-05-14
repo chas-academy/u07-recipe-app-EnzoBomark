@@ -1,8 +1,0 @@
-<div class="min-w-full flex flex-col items-center">
-  <h2 *ngIf="(recipes | json) == '[]'" class="w-11/12 font-nunito text-xl font-bold ml-2">No recipes Saved</h2>
-  <div class="w-full flex flex-col items-center" *ngIf="(recipes | json) != '[]'">
-  <h2 class="w-11/12 font-nunito text-xl font-bold ml-2">Saved recipes</h2>
-  <div  *ngFor="let recipe of recipes" class="">
-    <app-list-item [recipe]="recipe"></app-list-item>
-  </div>
-</div>

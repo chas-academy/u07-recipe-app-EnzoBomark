@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "random-recipe-item.component.scss"
+    ],
+    "names": [],
+    "file": "random-recipe-item.component.css"
+}

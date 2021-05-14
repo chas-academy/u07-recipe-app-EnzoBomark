@@ -1,0 +1,29 @@
+<div class="w-full max-w-screen-xl flex justify-center mb-2">
+  <div class="w-full m-1 relative">
+    <div class="bg-gray-50 w-full h-full p-2 rounded-xl light-shadow cursor-pointer flex" (click)="getInstructions()">
+      <img [src]="recipe.image" [alt]="recipe.title" class="w-24 h-32 object-cover rounded-xl light-shadow ">
+      <div class="ml-2 w-full flex flex-col justify-between">
+        <p class="w-10/12 h-6 overflow-hidden font-roboto mt-1">{{ recipe.title }}</p>
+        <div  class="flex mb-9">
+          <div *ngIf="recipe.vegan" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+            <img src="../assets/images/vegan.png" alt="vegan"  class="w-4 h-4">
+          </div>
+          <div *ngIf="recipe.vegetarian" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+            <img src="../assets/images/vegetarian.png" alt="vegetarian"  class="w-4 h-4">
+          </div>
+          <div *ngIf="recipe.glutenFree" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+            <img src="../assets/images/glutenfree.png" alt="glutenFree"  class="w-4 h-4">
+          </div>
+          <div *ngIf="recipe.lowFodmap" class="flex justify-center items-center bg-white w-8 h-8 rounded-xl light-shadow ml-2">
+            <img src="../assets/images/none-diets.png" alt="lowFodmap"  class="w-4 h-4">
+          </div>
+        </div>
+        <div class="ml-2 flex">
+          <img src="../assets/images/clock.png" alt="star"  class="w-4 h-4">
+          <p class="pl-1 text-xs leading-relaxed font-normal text-gray-600 font-roboto">{{ recipe.readyInMinutes }} min</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="flex justify-center w-full mt-2">
+  <nav class="w-full flex justify-start">
+        <div class="w-2/4 flex justify-between text-md">
+          <a *ngIf="!auth" routerLink="/login">Login</a>
+          <a *ngIf="!auth" routerLink="/register">Register</a>
+          <a *ngIf="auth"routerLink="/user">Profile</a>
+          <a *ngIf="auth"routerLink="/" (click)="logout()">Logout</a>
+          <a routerLink="/">Home</a>
+        </div>
+  </nav>
+</div>

@@ -1,0 +1,18 @@
+<div>
+  <h1 class="font-nunito text-3xl font-bold pl-16 pt-5">Register</h1>
+  
+  <form ngNativeValidate  [formGroup]='registerForm'  autocomplete="off" (submit)="submit()" class=" flex flex-col items-center">
+  
+    <p *ngIf="error" class="text-red-500">{{ error }}</p>
+
+    <input type="text" formControlName="name" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md mb-5 light-shadow font-roboto focus:outline-none" placeholder="Name"  required>
+    
+    <input type="email" formControlName="email" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md mb-5 light-shadow font-roboto focus:outline-none" placeholder="Email"  required>
+    
+    <input type="password" formControlName="password" class="bg-gray-50 w-11/12 px-5 py-4 mb-5 rounded-md light-shadow font-roboto focus:outline-none" placeholder="Password" required minlength="3">
+    
+    <input type="password" formControlName="password_confirmed" class="bg-gray-50 w-11/12 px-5 py-4 rounded-md light-shadow font-roboto focus:outline-none" placeholder="Password Confirmation" required minlength="3">
+  
+    <button class="w-4/5 py-3 mt-20 mb-20 bg-gray-800 rounded-md light-shadow font-roboto focus:outline-none text-white">Register</button>
+  </form>
+</div>
